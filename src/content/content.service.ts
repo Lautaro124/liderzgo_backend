@@ -10,24 +10,12 @@ export class ContentService {
     @InjectModel(Content.name) private readonly contentModel: Model<Content>,
   ) {}
 
-  create(constent: ContentDto) {
+  async create(constent: ContentDto) {
     const createdContent = new this.contentModel(constent);
-    return createdContent.save();
+    return await createdContent.save();
   }
 
-  findAll() {
-    return `This action returns all content`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} content`;
-  }
-
-  update(id: number) {
-    return `This action updates a #${id} content`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} content`;
+  async findModules(module: string) {
+    return await this.contentModel.find({ module: module }).exec();
   }
 }

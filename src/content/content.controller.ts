@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ContentService } from './content.service';
 import { ContentDto } from './dto/content.dto';
 
@@ -7,7 +7,12 @@ export class ContentController {
   constructor(private contentService: ContentService) {}
 
   @Post()
-  create(@Body() content: ContentDto) {
-    return this.contentService.create(content);
+  async create(@Body() content: ContentDto) {
+    return await this.contentService.create(content);
+  }
+
+  @Get(':module')
+  async find(@Param('module') module: string) {
+    return this.contentService.findModules(module);
   }
 }
