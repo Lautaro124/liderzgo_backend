@@ -18,4 +18,12 @@ export class UsersService {
   async create(registerDto: RegisterDto): Promise<User> {
     return await new this.userModule(registerDto).save();
   }
+
+  async findAll(): Promise<User[]> {
+    return await this.userModule
+      .find({
+        role: 'student',
+      })
+      .exec();
+  }
 }
