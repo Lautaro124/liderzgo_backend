@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class ContentDto {
   @IsString()
@@ -7,7 +7,13 @@ export class ContentDto {
   @IsString()
   @IsNotEmpty()
   content: string;
+  @IsNumber()
+  @IsNotEmpty()
+  class_day: number;
+  @IsNumber()
+  @IsNotEmpty()
+  module: number;
   @IsString()
   @IsNotEmpty()
-  module: string;
+  video: string;
 }
