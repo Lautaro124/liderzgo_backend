@@ -18,12 +18,19 @@ export class Content {
 
   @Prop({
     required: true,
-    type: String,
+    type: Number,
   })
-  module: string;
+  module: Number;
 
   @Prop()
   video?: string;
+
+  @Prop({    
+    required: true,
+    type: Number
+  })
+  class_day: Number;
+
 }
 
 export type ContentDocument = HydratedDocument<Content>;
