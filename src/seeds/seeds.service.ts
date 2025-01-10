@@ -48,14 +48,14 @@ export class SeedsService {
         content: 'Learn the basics of programming',
         module: 1,
         class_day:1,
-        video;'asdasd',
+        video:'asdasd',
       },
       {
         title: 'Introduction to Databases',
         content: 'Learn the basics of databases',
         module: 2,
         class_day:2,
-        video;'asdasd',
+        video:'asdasd',
       },
     ];
 
