@@ -10,6 +10,22 @@ export class HistoryService {
     @InjectModel(History.name) private readonly historyModel: Model<History>,
   ) {}
 
+  async updateHistory(createHistoryDto: CreateHistoryDto) {
+    return this.historyModel.findOneAndUpdate(
+      {
+        email: createHistoryDto.email,
+        module: createHistoryDto.module,
+        course_name: createHistoryDto.course_name,
+        title: createHistoryDto.title,
+      },
+      {
+        class_day: createHistoryDto.class_day,
+        time: createHistoryDto.time,
+      },
+      { new: true },
+    );
+  }
+
   async create(createHistoryDto: CreateHistoryDto) {
     const findHistory = await this.historyModel.findOne({
       email: createHistoryDto.email,
@@ -19,15 +35,8 @@ export class HistoryService {
     });
 
     if (findHistory) {
-      if (findHistory.class_day < createHistoryDto.class_day) {
-        return this.historyModel.findOneAndUpdate(
-          { _id: findHistory._id },
-          {
-            class_day: createHistoryDto.class_day,
-            time: createHistoryDto.time,
-          },
-          { new: true },
-        );
+      if (findHistory.class_day <= createHistoryDto.class_day) {
+        return this.updateHistory(createHistoryDto);
       }
 
       return findHistory;
