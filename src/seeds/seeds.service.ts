@@ -47,15 +47,17 @@ export class SeedsService {
         title: 'Introduction to Programming',
         content: 'Learn the basics of programming',
         module: 1,
-        class_day:1,
-        video:'asdasd',
+        class_day: 1,
+        video: 'asdasd',
+        course_name: 'Python Programming',
       },
       {
         title: 'Introduction to Databases',
         content: 'Learn the basics of databases',
         module: 2,
-        class_day:2,
-        video:'asdasd',
+        class_day: 2,
+        video: 'asdasd',
+        course_name: 'Python Programming',
       },
     ];
 
