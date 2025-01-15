@@ -13,13 +13,23 @@ export class HistoryService {
   async create(createHistoryDto: CreateHistoryDto) {
     const findHistory = await this.historyModel.findOne({
       email: createHistoryDto.email,
-      class_day: createHistoryDto.class_day,
       module: createHistoryDto.module,
       course_name: createHistoryDto.course_name,
       title: createHistoryDto.title,
     });
 
     if (findHistory) {
+      if (findHistory.class_day < createHistoryDto.class_day) {
+        return this.historyModel.findOneAndUpdate(
+          { _id: findHistory._id },
+          {
+            class_day: createHistoryDto.class_day,
+            time: createHistoryDto.time,
+          },
+          { new: true },
+        );
+      }
+
       return findHistory;
     }
 
