@@ -2,7 +2,6 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { RegisterDto, UserDto } from 'src/common/dto/user.dto';
 import { UsersService } from 'src/users/users.service';
-import { jwtConstants } from './constants/auth.constants';
 
 @Injectable()
 export class AuthService {
@@ -21,10 +20,7 @@ export class AuthService {
     const payload = { username: user.username, sub: user.email };
 
     return {
-      access_token: this.jwtService.sign(payload,{
-        secret: jwtConstants.secret,
-        expiresIn: jwtConstants.expire_in,
-      }),
+      access_token: this.jwtService.sign(payload),
     };
   }
 
