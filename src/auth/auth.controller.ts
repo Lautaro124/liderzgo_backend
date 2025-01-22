@@ -14,6 +14,7 @@ export class AuthController {
 
   @Post('register')
   async signUp(@Body() registerDto: RegisterDto) {
+    console.log('🚀 ~ AuthController ~ signUp ~ registerDto:', registerDto);
     return await this.authService.signUp(registerDto);
   }
 }

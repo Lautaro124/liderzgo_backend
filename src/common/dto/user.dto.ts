@@ -1,18 +1,9 @@
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class UserDto {
   @IsOptional()
-  @IsString()
-  username?: string;
-  @IsOptional()
   @IsEmail()
-  email?: string;
+  email: string;
   @IsNotEmpty()
   @IsString()
   password: string;
@@ -21,7 +12,19 @@ export class UserDto {
 export class RegisterDto {
   @IsNotEmpty()
   @IsString()
-  username: string;
+  name: string;
+
+  @IsNotEmpty()
+  @IsString()
+  lastName: string;
+
+  @IsNotEmpty()
+  @IsString()
+  work: string;
+
+  @IsNotEmpty()
+  @IsString()
+  birthdate: Date;
 
   @IsNotEmpty()
   @IsEmail()
@@ -30,10 +33,4 @@ export class RegisterDto {
   @IsNotEmpty()
   @IsString()
   password: string;
-  @IsOptional()
-  @IsNumber()
-  phone: number;
-  @IsNotEmpty()
-  @IsString()
-  course_location: string;
 }

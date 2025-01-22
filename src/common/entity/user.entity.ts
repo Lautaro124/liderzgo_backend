@@ -7,7 +7,13 @@ export class User {
     required: true,
     type: String,
   })
-  username: string;
+  name: string;
+
+  @Prop({
+    required: true,
+    type: String,
+  })
+  lastName: string;
 
   @Prop({
     required: true,
@@ -21,6 +27,18 @@ export class User {
     type: String,
   })
   email: string;
+
+  @Prop({
+    required: true,
+    type: String,
+  })
+  work: string;
+
+  @Prop({
+    required: true,
+    type: Date,
+  })
+  birthdate: Date;
 
   @Prop({
     required: true,
@@ -41,9 +59,8 @@ export class User {
 
   @Prop({
     type: String,
-    required: true,
   })
-  course_location: string;
+  course_location?: string;
 
   @Prop({
     type: Boolean,
@@ -59,7 +76,6 @@ export class User {
 
   @Prop({
     type: Date,
-    required: true,
     default: () => new Date(),
   })
   next_payment_date: Date;

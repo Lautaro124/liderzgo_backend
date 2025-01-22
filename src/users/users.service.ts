@@ -10,13 +10,17 @@ export class UsersService {
   async findOne(userDto: UserDto): Promise<User | undefined> {
     return await this.userModule
       .findOne({
-        $or: [{ username: userDto.username }, { email: userDto.email }],
+        email: userDto.email,
       })
       .exec();
   }
 
   async create(registerDto: RegisterDto): Promise<User> {
-    return await new this.userModule(registerDto).save();
+    try {
+      return await new this.userModule(registerDto).save();
+    } catch (error) {
+      throw new Error('Error creating user: ' + error.message);
+    }
   }
 
   async findAll(): Promise<User[]> {

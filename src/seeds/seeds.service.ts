@@ -14,26 +14,32 @@ export class SeedsService {
   async seedUsers() {
     const users: User[] = [
       {
-        username: 'Juan Perez',
+        name: 'Juan',
+        lastName: 'Perez',
+        work: 'Student',
+        birthdate: new Date('1990-01-01'),
         role: 'student',
         email: 'juan.perez@example.com',
         password: 'securepassword123',
         course_location: 'Mexico',
         is_active: false,
         paid: false,
-        next_payment_date: undefined,
-        current_module: 0,
+        next_payment_date: new Date(),
+        current_module: 1,
       },
       {
-        username: 'Maria Lopez',
+        name: 'Maria',
+        lastName: 'Lopez',
+        work: 'Teacher',
+        birthdate: new Date('1985-05-15'),
         role: 'teacher',
         email: 'maria.lopez@example.com',
         password: 'securepassword456',
         course_location: 'Mexico',
         is_active: false,
         paid: false,
-        next_payment_date: undefined,
-        current_module: 0,
+        next_payment_date: new Date(),
+        current_module: 1,
       },
     ];
 
