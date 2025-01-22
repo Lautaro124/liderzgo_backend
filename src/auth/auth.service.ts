@@ -26,6 +26,12 @@ export class AuthService {
 
   async signUp(registerDto: RegisterDto) {
     console.log('🚀 ~ AuthService ~ signUp ~ registerDto:', registerDto);
-    return await this.usersService.create(registerDto);
+    const user = await this.usersService.create(registerDto);
+
+    const payload = { user };
+
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 }
